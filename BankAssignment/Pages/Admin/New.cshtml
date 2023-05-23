@@ -1,0 +1,35 @@
+﻿@page
+@model BankAssignment.Pages.Admin.NewModel
+@{
+}
+@if (Model.Message is not null)
+{
+    <div class="alert alert-warning" role="alert">
+        <div class="text-center h3">@Model.Message</div>
+    </div>
+}
+
+
+<div class="card bg-dark border-2 border-light bg-opacity-75 text-light">
+    <div class="card-title h2 text-center">Create user</div>
+    <form method="post">
+        <div class="form-floating m-3 text-dark">
+            <input type="email" class="form-control" asp-for="Email" />
+            <label class="form-label" asp-for="Email">Email</label>
+            <span asp-validation-for="Email" class="field-validation-error text-danger"></span>
+        </div>
+        <div class="form-floating m-3 text-dark">
+            <input type="password" class="form-control" asp-for="Password" />
+            <label class="form-label" asp-for="Password">Password</label>
+            <span asp-validation-for="Password" class="field-validation-error text-danger"></span>
+        </div>
+        <div class="form-floating text-dark m-3">
+            <select class="form-control" asp-for="Role" asp-items="@Model.Roles"></select>
+            <label class="form-label" asp-for="Role">Role</label>
+            <span asp-validation-for="Role" class="field-validation-error text-danger"></span>
+        </div>
+        <div class="d-flex justify-content-end m-3">
+            <button type="submit" class="btn btn-outline-warning">Create user</button>
+        </div>
+    </form>
+</div>

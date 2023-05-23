@@ -1,0 +1,39 @@
+﻿@page
+@model BankAssignment.Pages.Accounts.TransactionModel
+@{
+}
+
+<div class="card bg-dark text-light border-2 border-light bg-opacity-75 my-5">
+    <div class="card-title text-center h2">@Model.Type</div>
+    <div class="card-subtitle text-center h4">Balance: @Model.Balance kr</div>
+    <div class="card-body">
+        <form method="post">
+            <div class="form-floating text-dark m-3">
+                <input class="form-control" asp-for="Amount" />
+                <label asp-for="Amount">Amount</label>
+                <span class="field-validation-error text-danger" asp-validation-for="Amount"></span>
+            </div>
+            @if (Model.Type == "Transfer")
+            {
+                <div class="form-floating text-dark m-3">
+                    <input class="form-control" asp-for="TransferId" />
+                    <label asp-for="TransferId">Transfer id</label>
+                    <span class="field-validation-error text-danger" asp-validation-for="TransferId"></span>
+                </div>
+            }
+            <div class="form-floating text-dark m-3">
+                <input class="form-control" asp-for="TransactionDate" />
+                <label asp-for="TransactionDate">Date</label>
+                <span class="field-validation-error text-danger " asp-validation-for="TransactionDate"></span>
+            </div>
+            <div class="form-floating text-dark m-3">
+                <input class="form-control" asp-for="Comment" />
+                <label asp-for="Comment">Comment</label>
+                <span class="field-validation-error text-danger" asp-validation-for="Comment"></span>
+            </div>
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-outline-warning m-3">Confirm transaction</button>
+            </div>
+        </form>
+    </div>
+</div>

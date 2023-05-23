@@ -1,0 +1,46 @@
+﻿@page
+@model BankAssignment.Pages.Accounts.CountryModel
+@{
+}
+<div class="card bg-dark border-2 border-light text-light mx-5">
+    <h1 class="card-title text-center border-bottom border-light">Top ten accounts for @Model.Country</h1>
+    <table class="table bg-dark text-light">
+        <thead>
+            <tr>
+                <th scope="col">
+                    Name
+                </th>
+                <th scope="col">
+                    Frequency
+                </th>
+                <th scope="col">
+                    Balance
+                </th>
+                <th scope="col">
+                    Loans
+                </th>
+                <th scope="col">
+                    Permanent Orders
+                </th>
+                <th scope="col">
+                    Transactions
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var account in @Model.TopTenAccounts)
+            {
+                <tr>
+                    <td>@account.Name</td>
+                    <td>@account.Frequency</td>
+                    <td>@account.Balance</td>
+                    <td>@account.LoanCount</td>
+                    <td>@account.PermOrderCount</td>
+                    <td>@account.TransactionCount</td>
+                    <td><a class="btn btn-secondary" asp-page="/Accounts/Index" asp-route-id="@account.Id">View</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

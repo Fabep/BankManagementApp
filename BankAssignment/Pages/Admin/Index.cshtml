@@ -1,0 +1,38 @@
+﻿@page
+@model BankAssignment.Pages.Admin.IndexModel
+@{
+}
+
+@if (Model.Message is not null)
+{
+    <div class="alert alert-success" role="alert">
+        <div class="text-center h3">@Model.Message 😎</div>
+    </div>
+}
+
+
+<div class="card bg-dark border-2 border-light text-light">
+    <div class="card-title text-center h2">Users</div>
+<div class="d-flex justify-content-end m-3">
+    <a class="btn btn-outline-warning" asp-page="/Admin/New">Create User</a>
+</div>
+<table class="table text-light">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Role</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in @Model.Users)
+        {
+            <tr>
+                <td>@user.Email</td>
+                <td>@user.Role</td>
+                <td><a class="btn btn-secondary" asp-page="/Admin/Edit" asp-route-id="@user.Id">Edit</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>

@@ -1,0 +1,70 @@
+﻿@page
+@model BankAssignment.Pages.Accounts.IndexModel
+@{
+}
+
+@if (Model.Message is not null)
+{
+    <div class="alert alert-success" role="alert">
+        <div class="text-center h3">@Model.Message 😎</div>
+    </div>
+}
+
+<div class="card bg-dark text-light border-2 border-light">
+    <div class="card-title d-flex justify-content-evenly">
+        <i class="h2">Transactions for Account: @Model.Account.Id</i>
+        <i class="h3">Balance: @Model.Account.Balance</i>
+        <i class="d-block">
+            <a class="btn btn-secondary m-1" asp-page="/Accounts/Transaction" asp-route-id="@Model.Account.Id" asp-route-type="Withdraw"><i class="fa-solid fa-hand-holding-dollar"></i></a>
+            <a class="btn btn-secondary m-1" asp-page="/Accounts/Transaction" asp-route-id="@Model.Account.Id" asp-route-type="Deposit"><i class="fa-solid fa-landmark"></i></a>
+            <a class="btn btn-secondary m-1" asp-page="/Accounts/Transaction" asp-route-id="@Model.Account.Id" asp-route-type="Transfer"><i class="fa-solid fa-money-bill-transfer"></i></a>
+        </i>
+
+    </div>
+    <table class="table text-light" id="transaction-table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Transfer Id</th>
+                <th scope="col">Type</th>
+                <th scope="col">Date</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <a class="btn btn-secondary" href="javascript:showMore();">Show more</a>
+</div>
+
+@section Scripts {
+    <script>
+        pageNo = 1;
+
+        document.addEventListener("DOMContentLoaded", function () {
+            showMore();
+        })
+
+        function showMore() {
+            fetch("/Accounts/Index?handler=ShowMore&pageNo=" + pageNo + "&id=@Model.Account.Id")
+                .then((response) => response.json())
+                .then((json) => {
+                    pageNo = pageNo + 1
+                    json.transactions.forEach(drawElements);
+                });
+        }
+
+        function drawElements(element) {
+            document.querySelector(`#transaction-table tbody`).innerHTML +=
+                `
+                                        <tr>
+                                            <td> ${element.id}</td>
+                                            <td> ${element.amount}</td>
+                                            <td> ${element.transferId}</td>
+                                            <td> ${element.type}</td>
+                                            <td> ${element.date}</td>
+                                        </tr>
+                                         `
+        }
+    </script>
+}

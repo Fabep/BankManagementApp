@@ -1,0 +1,46 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="container">
+    <div class="d-flex justify-content-around" style="margin-top:7em;">
+        <div class="card bg-dark text-warning border-3 border-light mx-2 bg-opacity-75">
+            <div class="card-body">
+                <h2 class="card-title">Sweden</h2>
+                <h4 class="card-text text-left" style="font-size:24px">Customers: @Model.SwedenInfo.CountryCustomerCount</h4>
+                <h4 class="card-text text-left">Accounts: @Model.SwedenInfo.CountryAccountCount</h4>
+                <h4 class="card-text text-left">Total Balance: @Model.SwedenInfo.CountryTotalBalance</h4>
+                <a class="btn btn-outline-warning" asp-page="/Accounts/Country" asp-route-countryCode="SE">View</a>
+            </div>
+        </div>
+        <div class="card bg-dark text-warning border-3 border-light mx-2 bg-opacity-75">
+            <div class="card-body">
+                <h2 class="card-title">Norway</h2>
+                <h4 class="card-text text-left">Customers: @Model.NorwayInfo.CountryCustomerCount</h4>
+                <h4 class="card-text text-left">Accounts: @Model.NorwayInfo.CountryAccountCount</h4>
+                <h4 class="card-text text-left">Total Balance: @Model.NorwayInfo.CountryTotalBalance</h4>
+                <a class="btn btn-outline-warning" asp-page="/Accounts/Country" asp-route-countryCode="NO">View</a>
+            </div>
+        </div>
+        <div class="card bg-dark text-warning border-3 border-light mx-2 bg-opacity-75">
+            <div class="card-body">
+                <h2 class="card-title">Denmark</h2>
+                <h4 class="card-text text-left">Customers: @Model.DenmarkInfo.CountryCustomerCount</h4>
+                <h4 class="card-text text-left">Accounts: @Model.DenmarkInfo.CountryAccountCount</h4>
+                <h4 class="card-text text-left">Total Balance: @Model.DenmarkInfo.CountryTotalBalance</h4>
+                <a class="btn btn-outline-warning" asp-page="/Accounts/Country" asp-route-countryCode="DK">View</a>
+            </div>
+        </div>
+        <div class="card bg-dark text-warning border-3 border-light mx-2 bg-opacity-75">
+            <div class="card-body">
+                <h2 class="card-title">Finland</h2>
+                <h4 class="card-text text-left">Customers: @Model.FinlandInfo.CountryCustomerCount</h4>
+                <h4 class="card-text text-left">Accounts: @Model.FinlandInfo.CountryAccountCount</h4>
+                <h4 class="card-text text-left">Total Balance: @Model.FinlandInfo.CountryTotalBalance</h4>
+                <a class="btn btn-outline-warning" asp-page="/Accounts/Country" asp-route-countryCode="FI">View</a>
+            </div>
+        </div>
+    </div>
+</div>

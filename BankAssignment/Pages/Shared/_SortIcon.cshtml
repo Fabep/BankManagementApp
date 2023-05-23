@@ -1,0 +1,19 @@
+﻿@model ModelLibrary.ViewModels.SortViewModel
+
+<th scope="col">
+    @Model.Property
+    <a asp-page="/Customers/Index"
+       asp-route-q="@Model.Q"
+       asp-route-sortColumn="@Model.Property"
+       asp-route-sortOrder="asc"
+       style="text-decoration: none">
+        <i class="fa-solid fa-angle-up"></i>
+    </a>
+    <a asp-page="/Customers/Index"
+       asp-route-q="@Model.Q"
+       asp-route-sortColumn="@Model.Property"
+       asp-route-sortOrder="desc"
+       style="text-decoration: none">
+        <i class="fa-solid fa-angle-down"></i>
+    </a>
+</th>

@@ -1,0 +1,174 @@
+﻿@page
+@model BankAssignment.Pages.Customers.OverviewModel
+@{
+}
+
+@if (Model.Message is not null)
+{
+    <div class="alert alert-success" role="alert">
+        <div class="text-center h3">@Model.Message 😎</div>
+    </div>
+}
+
+<div class="card border-2 text-light bg-dark border-light">
+    <div class="row g-0">
+        <div class="col-4 d-flex justify-content-center align-items-center">
+            <i class="fa-regular fa-user m-2" style="font-size:12em;"></i>
+        </div>
+        <div class="col-8">
+            <div class="card-title h2">@Model.Customer.Name</div>
+            <div class="card-body">
+                <div class="card-text">Birthday: @Model.Customer.Birthday</div>
+                <div class="card-text">Gender: @Model.Customer.Gender</div>
+                <div class="card-text">Location: @Model.Customer.City, @Model.Customer.Country</div>
+                <div class="card-text">Phone Number: @Model.Customer.Telephonenumber</div>
+                <div class="card-text">Total Balance: @Model.TotalBalance</div>
+            </div>
+        </div>
+        <div class="card-body border-bottom border-light">
+            <a class="btn btn-secondary m-3" asp-page="/Customers/Edit" asp-route-id="@Model.Id">
+                <i class="fa-regular fa-pen-to-square"></i>
+            </a>
+            <a class="btn btn-secondary m-3" asp-page="/Accounts/New" asp-route-id="@Model.Id">New account</a>
+        </div>
+    </div>
+    <table class="table text-light">
+        <thead>
+            <tr>
+                <th scope="col">
+                    Account Id
+                    <a asp-page="/Customers/Overview"
+                       asp-route-id="@Model.Id"
+                       asp-route-q="@Model.Q"
+                       asp-route-sortColumn="AccountId"
+                       asp-route-sortOrder="asc"
+                       style="text-decoration: none">
+                        <i class="fa-solid fa-angle-up"></i>
+                    </a>
+                    <a asp-page="/Customers/Overview"
+                       asp-route-id="@Model.Id"
+                       asp-route-q="@Model.Q"
+                       asp-route-sortColumn="AccountId"
+                       asp-route-sortOrder="desc"
+                       style="text-decoration: none">
+                        <i class="fa-solid fa-angle-down"></i>
+                    </a>
+                </th>
+                <th scope="col">
+                    Frequency
+                    <a asp-page="/Customers/Overview"
+                       asp-route-id="@Model.Id"
+                       asp-route-q="@Model.Q"
+                       asp-route-sortColumn="Frequency"
+                       asp-route-sortOrder="asc"
+                       style="text-decoration: none">
+                        <i class="fa-solid fa-angle-up"></i>
+                    </a>
+                    <a asp-page="/Customers/Overview"
+                       asp-route-id="@Model.Id"
+                       asp-route-q="@Model.Q"
+                       asp-route-sortColumn="Frequency"
+                       asp-route-sortOrder="desc"
+                       style="text-decoration: none">
+                        <i class="fa-solid fa-angle-down"></i>
+                    </a>
+                </th>
+                <th scope="col">
+                    Balance
+                    <a asp-page="/Customers/Overview"
+                       asp-route-id="@Model.Id"
+                       asp-route-q="@Model.Q"
+                       asp-route-sortColumn="Balance"
+                       asp-route-sortOrder="asc"
+                       style="text-decoration: none">
+                        <i class="fa-solid fa-angle-up"></i>
+                    </a>
+                    <a asp-page="/Customers/Overview"
+                       asp-route-id="@Model.Id"
+                       asp-route-q="@Model.Q"
+                       asp-route-sortColumn="Balance"
+                       asp-route-sortOrder="desc"
+                       style="text-decoration: none">
+                        <i class="fa-solid fa-angle-down"></i>
+                    </a>
+                </th>
+                <th scope="col">
+                    Loans
+                    <a asp-page="/Customers/Overview"
+                       asp-route-id="@Model.Id"
+                       asp-route-q="@Model.Q"
+                       asp-route-sortColumn="Loans"
+                       asp-route-sortOrder="asc"
+                       style="text-decoration: none">
+                        <i class="fa-solid fa-angle-up"></i>
+                    </a>
+                    <a asp-page="/Customers/Overview"
+                       asp-route-id="@Model.Id"
+                       asp-route-q="@Model.Q"
+                       asp-route-sortColumn="Loans"
+                       asp-route-sortOrder="desc"
+                       style="text-decoration: none">
+                        <i class="fa-solid fa-angle-down"></i>
+                    </a>
+                </th>
+                <th scope="col">
+                    Permanent Orders
+                    <a asp-page="/Customers/Overview"
+                       asp-route-id="@Model.Id"
+                       asp-route-q="@Model.Q"
+                       asp-route-sortColumn="Permanent Orders"
+                       asp-route-sortOrder="asc"
+                       style="text-decoration: none">
+                        <i class="fa-solid fa-angle-up"></i>
+                    </a>
+                    <a asp-page="/Customers/Overview"
+                       asp-route-id="@Model.Id"
+                       asp-route-q="@Model.Q"
+                       asp-route-sortColumn="Permanent Orders"
+                       asp-route-sortOrder="desc"
+                       style="text-decoration: none">
+                        <i class="fa-solid fa-angle-down"></i>
+                    </a>
+                </th>
+                <th scope="col">
+                    Transactions
+                    <a asp-page="/Customers/Overview"
+                       asp-route-id="@Model.Id"
+                       asp-route-q="@Model.Q"
+                       asp-route-sortColumn="Transactions"
+                       asp-route-sortOrder="asc"
+                       style="text-decoration: none">
+                        <i class="fa-solid fa-angle-up"></i>
+                    </a>
+                    <a asp-page="/Customers/Overview"
+                       asp-route-id="@Model.Id"
+                       asp-route-q="@Model.Q"
+                       asp-route-sortColumn="Transactions"
+                       asp-route-sortOrder="desc"
+                       style="text-decoration: none">
+                        <i class="fa-solid fa-angle-down"></i>
+                    </a>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var account in @Model.Accounts)
+            {
+                <tr>
+                    <td>@account.Id</td>
+                    <td>@account.Frequency</td>
+                    <td>@account.Balance</td>
+                    <td>@account.LoanCount</td>
+                    <td>@account.PermOrderCount</td>
+                    <td>@account.TransactionCount</td>
+                    <td><a class="btn btn-secondary" asp-page="/Accounts/Index" asp-route-id="@account.Id">View</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+﻿@page
+@model BankAssignment.Pages.Accounts.NewModel
+@{
+}
+
+
+<div class="card bg-dark border-2 border-light bg-opacity-75 text-light">
+    <div class="card-title h2 text-center">Create user</div>
+    <form method="post">
+
+        <input type="hidden" class="form-control" asp-for="Id" />
+        <label class="form-label" style="display:none" asp-for="Id"></label>
+        <span asp-validation-for="Id" class="field-validation-error text-danger"></span>
+
+        <div class="form-floating m-3 text-dark">
+            <input type="number" class="form-control" asp-for="Balance" />
+            <label class="form-label" asp-for="Balance">Balance</label>
+            <span asp-validation-for="Balance" class="field-validation-error text-danger"></span>
+        </div>
+        <div class="form-floating text-dark m-3">
+            <select class="form-control" asp-for="Frequency" asp-items="@Model.Frequencies"></select>
+            <label class="form-label" asp-for="Frequency">Frequency</label>
+            <span asp-validation-for="Frequency" class="field-validation-error text-danger"></span>
+        </div>
+        <div class="d-flex justify-content-end m-3">
+            <button type="submit" class="btn btn-outline-warning">Create account</button>
+        </div>
+    </form>
+</div>

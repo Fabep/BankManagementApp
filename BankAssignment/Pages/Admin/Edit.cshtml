@@ -1,0 +1,33 @@
+﻿@page
+@model BankAssignment.Pages.Admin.EditModel
+@{
+}
+
+<div class="card bg-dark border-light border-2 mx-5 text-light bg-opacity-75">
+    <div class="card-title text-light text-center my-3 h4">User: @Model.UserId</div>
+    <form method="post">
+        <div class="form-group">
+            <label class="form-label" style="display:none" asp-for="UserId"></label>
+            <input type="hidden" class="form-control" asp-for="UserId" />
+            <span asp-validation-for="UserId" class="field-validation-error text-danger"></span>
+        </div>
+        <div class="form-floating text-dark m-3">
+            <input type="email" class="form-control" asp-for="Email" />
+            <label class="form-label" asp-for="Email">Email</label>
+            <span asp-validation-for="Email" class="field-validation-error text-danger"></span>
+        </div>
+        <div class="form-floating text-dark m-3">
+            <input type="password" class="form-control" asp-for="Password" />
+            <label class="form-label" asp-for="Password">Password</label>
+            <span asp-validation-for="Password" class="field-validation-error text-danger"></span>
+        </div>
+        <div class="form-floating text-dark m-3">
+            <select class="form-control" asp-for="Role" asp-items="@Model.Roles"></select>
+            <label class="form-label" asp-for="Role">Role</label>
+            <span asp-validation-for="Role" class="field-validation-error text-danger"></span>
+        </div>
+        <div class="d-flex justify-content-end m-3">
+            <button type="submit" class="btn btn-outline-warning">Update user</button>
+        </div>
+    </form>
+</div>
